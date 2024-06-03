@@ -41,4 +41,4 @@ Se o sistema não estiver respondendo aos botões, verifique se o código está 
 
 Este sistema de controle de LEDs é útil para estudantes e professores em uma sala de aula. Com suas características simples e descomplicadas, ele possibilita que os estudantes demonstrem suas necessidades ou sentimentos de maneira clara e eficaz.
 <br>
-By Matheus e Vitória
+
