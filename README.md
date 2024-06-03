@@ -6,10 +6,10 @@ Este é um manual de usuário para o RYB DROP,um sistema de controle de LEDs que
 
 # Componentes
 
-3 botões (vermelho, amarelo e azul)
-1 LED RGB (vermelho, verde e azul)
-Arduino (placa de desenvolvimento)
-Porta de carregamento (Micro-USB) 
+3 botões (vermelho, amarelo e azul)<br>
+1 LED RGB (vermelho, verde e azul)<br>
+Arduino (placa de desenvolvimento)<br>
+Porta de carregamento (Micro-USB) <br>
 Bateria recarregavel (7.4V)
 
 # Funcionalidades
