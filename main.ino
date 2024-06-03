@@ -11,7 +11,7 @@ int fadeValueG = 0;
 int fadeValueB = 0;
 
 unsigned long previousMillis = millis();
-const long interval = 5;
+const long interval = 30;
 
 bool isPressedR = false;
 bool isPressedY = false;
@@ -40,36 +40,39 @@ void loop() {
 
   unsigned long currentMillis = millis();
 
-  if (digitalRead(btnR) == LOW && isPressedR == false) {
+  if (corSelecionada == 0) {
 
-    isPressedR = true;
-    countR++;
-    Serial.write("Preciso sair de sala! ");
-    corSelecionada = 1;
+    if (digitalRead(btnR) == LOW && isPressedR == false) {
 
-  } else if (digitalRead(btnR) == HIGH && isPressedR == true) {
-    isPressedR = false;
-  }
+      isPressedR = true;
+      countR++;
+      Serial.write("Preciso sair de sala! ");
+      corSelecionada = 1;
 
-  if (digitalRead(btnY) == LOW && isPressedY == false) {
+    } else if (digitalRead(btnR) == HIGH && isPressedR == true) {
+      isPressedR = false;
+    }
 
-    isPressedY = true;
-    countY++;
-    Serial.write("Ruido excessivo! ");
-    corSelecionada = 2;
+    if (digitalRead(btnY) == LOW && isPressedY == false) {
 
-  } else if (digitalRead(btnY) == HIGH && isPressedY == true) {
-    isPressedY = false;
-  }
+      isPressedY = true;
+      countY++;
+      Serial.write("Ruido excessivo! ");
+      corSelecionada = 2;
 
-  if (digitalRead(btnB) == LOW && isPressedB == false) {
-    isPressedB = true;
-    countB++;
-    Serial.write("Tenho duvida! ");
-    corSelecionada = 3;
+    } else if (digitalRead(btnY) == HIGH && isPressedY == true) {
+      isPressedY = false;
+    }
 
-  } else if (digitalRead(btnB) == HIGH && isPressedB == true) {
-    isPressedB = false;
+    if (digitalRead(btnB) == LOW && isPressedB == false) {
+      isPressedB = true;
+      countB++;
+      Serial.write("Tenho duvida! ");
+      corSelecionada = 3;
+
+    } else if (digitalRead(btnB) == HIGH && isPressedB == true) {
+      isPressedB = false;
+    }
   }
 
   if (corSelecionada == 0) {
@@ -101,30 +104,17 @@ void loop() {
       }
     }
   } else if (corSelecionada == 2) {
-    if (currentMillis - previousMillis >= interval) {
-      previousMillis = currentMillis;
 
-      if ((fadeValueG <= 255) && subindo == true) {
-        analogWrite(redPin, fadeValueR);
-        analogWrite(greenPin, fadeValueG);
-        analogWrite(bluePin, 0);
-        fadeValueR++;
-        fadeValueG++;
-        if (fadeValueG == 255) {
-          subindo = false;
-        }
-      } else if (fadeValueG >= 0 && !subindo) {
-        analogWrite(redPin, fadeValueR);
-        analogWrite(greenPin, fadeValueG);
-        analogWrite(bluePin, 0);
-        fadeValueR--;
-        fadeValueG--;
-        if (fadeValueG == 0) {
-          corSelecionada = 0;
-          subindo = true;
-        }
-      }
+    analogWrite(redPin, 255);
+    analogWrite(greenPin, 37);
+
+    if (digitalRead(btnY) == LOW && isPressedY == false) {
+      isPressedY = true;
+      corSelecionada = 0;
+    } else if (digitalRead(btnY) == HIGH && isPressedY == true) {
+      isPressedY = false;
     }
+
   } else if (corSelecionada == 3) {
     if (currentMillis - previousMillis >= interval) {
       previousMillis = currentMillis;
