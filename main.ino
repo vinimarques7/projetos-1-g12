@@ -46,7 +46,7 @@ void loop() {
 
       isPressedR = true;
       countR++;
-      Serial.write("Preciso sair de sala! ");
+      Serial.println("Preciso sair de sala! ");
       corSelecionada = 1;
 
     } else if (digitalRead(btnR) == HIGH && isPressedR == true) {
@@ -57,7 +57,7 @@ void loop() {
 
       isPressedY = true;
       countY++;
-      Serial.write("Ruido excessivo! ");
+      Serial.println("Ruido excessivo! ");
       corSelecionada = 2;
 
     } else if (digitalRead(btnY) == HIGH && isPressedY == true) {
@@ -67,7 +67,7 @@ void loop() {
     if (digitalRead(btnB) == LOW && isPressedB == false) {
       isPressedB = true;
       countB++;
-      Serial.write("Tenho duvida! ");
+      Serial.println("Tenho duvida! ");
       corSelecionada = 3;
 
     } else if (digitalRead(btnB) == HIGH && isPressedB == true) {
